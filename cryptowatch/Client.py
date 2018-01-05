@@ -1,6 +1,6 @@
 
 import requests
-from urllib.parse import urljoin, parse_qsl, urlunparse, urlparse
+from urllib.parse import urljoin, parse_qsl, urlunparse, urlparse, urlencode
 import urllib
 
 import cryptowatch.Msg as Msg
@@ -33,7 +33,7 @@ def _add_query_string(url, params):
     x = list(urlparse(url))
     q = dict(parse_qsl(x[4]))
     q.update(params)
-    x[4] = urllib.urlencode(q)
+    x[4] = urlencode(q)
     return urlunparse(x)
 
 def GetAllowance(**kwargs):
